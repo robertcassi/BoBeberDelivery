@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 1 ? 'https://' : 'http://';
+echo $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 1 ? 'https://' : 'http://';
 $config['base_url'] = $protocol . $_SERVER["HTTP_HOST"];
 
 /*
