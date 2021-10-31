@@ -20,7 +20,7 @@
 		<div id="cabecalho" >
 			<div class="container" >
 				<div class="row" >
-					<img src="assets/images/LogoAprovadaFB.png" class="img-thumbnail float-start logoBb" alt="Bó Beber">
+					<img src="<?php echo base_url(); ?>assets/images/LogoAprovadaFB.png" class="img-thumbnail float-start logoBb" alt="Bó Beber">
 				</div>
 			</div>
 		</div>
