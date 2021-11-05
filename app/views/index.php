@@ -43,7 +43,7 @@
 		<div id="mainPage" class="shadow-sm container pb-2" >
 			<div class="row" >	
 
-				<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="ShoppingCart" aria-labelledby="ShoppingCartLabel" >
+				<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="ShoppingCart" aria-labelledby="ShoppingCartLabel" >
 					<div class="offcanvas-header" style="margin-bottom: -20px;" >
 						<span style="font-weight: 600; font-size: 18px; color: #000; margin: 0 0 0 0; display: inline-block;"> Meus Produtos</span>
 						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
