@@ -33,7 +33,7 @@
 								<a class="nav-link" aria-current="login" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" ><i class="fa fa-user-alt-slash" ></i> Login</a>
 							</li>
 							<li class="nav-item ms-auto">
-								<a class="nav-link user-select-none" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart" aria-controls="ShoppingCart" href="#" ><i class="fa fa-shopping-cart" ></i> <span class="ms-1 badge border border-warning totProdCart" ><?php echo count($Cart); ?><span></a>
+								<a class="nav-link user-select-none" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart" aria-controls="ShoppingCart" href="#" ><i class="fa fa-shopping-cart" ></i> <span class="ms-1 badge border border-warning totProdCart" ><span></a>
 							</li>
 						</ul>
 					</div>
@@ -52,8 +52,9 @@
 						<div style="max-height: 300px; overflow-y: auto;" >
 							<small>Selecione o produto para excluir</small>							
 							<ul class="list-group mb-3" id="listaProdCards" >
-								<?php $valFrete = 10; $totalProdutos = 0; foreach($Cart as $key => $item) { $totalProdutos += $item->valor;?>
-								<li class="list-group-item d-flex justify-content-between itemCart noselect" onclick="ShowBtnDel(this)" >
+								<?php $valFrete = 10; $totalProdutos = 0; $totalQtdProdutos = 0; foreach($Cart as $key => $item) { $totalProdutos += $item->valor; $totalQtdProdutos += $item->qtd; ?>
+								<li class="list-group-item d-flex justify-content-between itemCart noselect" >
+									<div class="invisible bgDelete" ></div>
 									<div class="text-end invisible btnDeleteItem" >
 										<button class="btn btn-sm btn-danger" onclick="DeletarProdutoCart(<?php echo $key; ?>)" ><i class="fa fa-trash" ></i></button>
 									</div>
@@ -70,7 +71,7 @@
 						</div>
 						<span style="font-size: 18px; margin-bottom: 10px; display: inline-block;" >Resumo da compra</span>
 						<div class="d-flex justify-content-between">
-							<p><i class="fa fa-archive text-muted" ></i> Produtos (<span class="totProdCart" ><?php echo count($Cart); ?></span>)</p>
+							<p><i class="fa fa-archive text-muted" ></i> Produtos (<span class="totProdCart" ><?php echo $totalQtdProdutos; ?></span>)</p>
 							<p class="fw-bold totalProdutos" >R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></p>
 						</div>
 						<div class="d-flex justify-content-between">

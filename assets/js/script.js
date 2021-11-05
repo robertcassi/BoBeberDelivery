@@ -163,6 +163,30 @@ $(document).ready(function () {
         }
     });
 
+    if(readCookie("Cart") != null)
+        atualizaCartAutomatico();
+    function atualizaCartAutomatico() {
+        var Cart = readCookie("Cart");
+            Cart = JSON.parse(Cart);
+        
+        var totalQtdProdutos = 0;
+        for(var i = 0; i < Cart.length; i++) {
+            totalQtdProdutos += Number(Cart[i].qtd);
+        }
+
+        $('.totProdCart').html(totalQtdProdutos);
+    }
+
+    $(".itemCart").on('mouseleave', function() {
+        $('.btnDeleteItem', $(this)).addClass('invisible');
+        $('.bgDelete', $(this)).addClass('invisible');
+    });
+    
+    $(".itemCart").on('mouseover', function() {
+        $('.btnDeleteItem', $(this)).removeClass('invisible');
+        $('.bgDelete', $(this)).removeClass('invisible');
+    });
+
 });
 
 function linkParceiro(link) {
@@ -218,17 +242,18 @@ function eraseCookie(name) {
 function CarregaProdutosCart() {
     var Cart = readCookie("Cart");
     Cart = Cart != null ? JSON.parse(Cart) : [];
-    
-    $('.totProdCart').html(Cart.length);
-    
+        
     var html = "";
     var totalProdutos = 0;
     var valFrete = 10;
     var tatalDesconto = 0;
+    var totalQtdProdutos = 0;
     for(var i = 0; i < Cart.length; i++) {
         totalProdutos += Number(Cart[i].valor);
+        totalQtdProdutos += Number(Cart[i].qtd);
 
-        html += '<li class="list-group-item d-flex justify-content-between itemCart noselect" onclick="ShowBtnDel(this)" >';
+        html += '<li class="list-group-item d-flex justify-content-between itemCart noselect" >';
+        html += '<div class="invisible bgDelete" ></div>';
         html += '<div class="text-end invisible btnDeleteItem" ><button class="btn btn-sm btn-danger" onclick="DeletarProdutoCart(' + i + ')" ><i class="fa fa-trash" ></i></button></div>';
         html += '<span><img src="' + Cart[i].foto + '" class="rounded float-left img-fluid" style="width: 30px;" />' + Cart[i].qtd + " x " + Cart[i].nome + '</span>';
         html += '<span class="col-auto" >' + Number(Cart[i].valor).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}) + '</span>';
@@ -243,6 +268,7 @@ function CarregaProdutosCart() {
         html += '</li>';
     }
 
+    $('.totProdCart').html(totalQtdProdutos);
     $("#listaProdCards").html(html);
     $(".totalProdutos").html(totalProdutos.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}));
     $(".valFrete").html(Number(valFrete).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}));
@@ -312,9 +338,11 @@ function CriaAlerta(_msg = '', idxType = 0) {
 }
 
 function ShowBtnDel(_this) {
-    if($('.btnDeleteItem', $(_this)).hasClass('invisible'))
+    if($('.btnDeleteItem', $(_this)).hasClass('invisible')) {
         $('.btnDeleteItem', $(_this)).removeClass('invisible');
-    else {
+        $('.bgDelete', $(_this)).removeClass('invisible');
+    } else {
         $('.btnDeleteItem', $(_this)).addClass('invisible');
+        $('.bgDelete', $(_this)).addClass('invisible');
     }
 }
