@@ -252,7 +252,7 @@ function CarregaProdutosCart() {
         totalProdutos += Number(Cart[i].valor);
         totalQtdProdutos += Number(Cart[i].qtd);
 
-        html += '<li class="list-group-item d-flex justify-content-between itemCart noselect" >';
+        html += '<li onmouseleave="HideBtnDel(this)" onmouseover="ShowBtnDel(this)" class="list-group-item d-flex justify-content-between itemCart noselect" >';
         html += '<div class="invisible bgDelete" ></div>';
         html += '<div class="text-end invisible btnDeleteItem" ><button class="btn btn-sm btn-danger" onclick="DeletarProdutoCart(' + i + ')" ><i class="fa fa-trash" ></i></button></div>';
         html += '<span><img src="' + Cart[i].foto + '" class="rounded float-left img-fluid" style="width: 30px;" />' + Cart[i].qtd + " x " + Cart[i].nome + '</span>';
@@ -338,11 +338,11 @@ function CriaAlerta(_msg = '', idxType = 0) {
 }
 
 function ShowBtnDel(_this) {
-    if($('.btnDeleteItem', $(_this)).hasClass('invisible')) {
-        $('.btnDeleteItem', $(_this)).removeClass('invisible');
-        $('.bgDelete', $(_this)).removeClass('invisible');
-    } else {
-        $('.btnDeleteItem', $(_this)).addClass('invisible');
-        $('.bgDelete', $(_this)).addClass('invisible');
-    }
+    $('.btnDeleteItem', $(_this)).removeClass('invisible');
+    $('.bgDelete', $(_this)).removeClass('invisible');
+}
+
+function HideBtnDel(_this) {
+    $('.btnDeleteItem', $(_this)).addClass('invisible');
+    $('.bgDelete', $(_this)).addClass('invisible');
 }
