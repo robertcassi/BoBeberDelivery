@@ -165,14 +165,14 @@ $(document).ready(function () {
 
     if(readCookie("Cart") != null)
         atualizaCartAutomatico();
+    
     function atualizaCartAutomatico() {
         var Cart = readCookie("Cart");
             Cart = JSON.parse(Cart);
         
         var totalQtdProdutos = 0;
-        for(var i = 0; i < Cart.length; i++) {
+        for(var i = 0; i < Cart.length; i++) 
             totalQtdProdutos += Number(Cart[i].qtd);
-        }
 
         $('.totProdCart').html(totalQtdProdutos);
     }
