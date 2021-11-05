@@ -311,7 +311,17 @@ function AddProdCart() {
 }
 
 function DeletarProdutoCart(_key) {
+    var Cart = readCookie("Cart");
+    if(Cart != null){
+        Cart = JSON.parse(Cart);
+        Cart.splice(_key, 1);
+        createCookie('Cart', JSON.stringify(Cart), 1);
 
+        CarregaProdutosCart();
+        CriaAlerta('Item removido do carrinho!', 0);
+    } else
+        CriaAlerta('Carrinho está vazio!', 2);
+        
 }
 
 function CriaAlerta(_msg = '', idxType = 0) {

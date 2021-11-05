@@ -56,7 +56,7 @@
 								<li class="list-group-item d-flex justify-content-between itemCart noselect" >
 									<div class="invisible bgDelete" ></div>
 									<div class="text-end invisible btnDeleteItem" >
-										<button class="btn btn-sm btn-danger" onclick="DeletarProdutoCart(<?php echo $key; ?>)" ><i class="fa fa-trash" ></i></button>
+										<button type="button" class="btn btn-sm btn-danger" onclick="DeletarProdutoCart(<?php echo $key; ?>)" ><i class="fa fa-trash" ></i></button>
 									</div>
 
 									<span><img src="<?php echo $item->foto; ?>" class="rounded float-left img-fluid" style="width: 30px;" /> <?php echo $item->qtd . " x " . $item->nome; ?></span>
