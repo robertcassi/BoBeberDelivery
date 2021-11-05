@@ -33,7 +33,7 @@
 								<a class="nav-link" aria-current="login" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" ><i class="fa fa-user-alt-slash" ></i> Login</a>
 							</li>
 							<li class="nav-item ms-auto">
-								<a class="nav-link user-select-none" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart" aria-controls="ShoppingCart" href="#" ><i class="fa fa-shopping-cart" ></i> <span class="ms-1 badge border border-warning totProdCart" ><span></a>
+								<a class="nav-link user-select-none" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart" aria-controls="ShoppingCart" href="#" ><i class="fa fa-shopping-cart" ></i> <span class="ms-1 badge border border-warning totProdCart" >0<span></a>
 							</li>
 						</ul>
 					</div>
